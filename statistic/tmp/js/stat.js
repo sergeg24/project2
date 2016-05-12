@@ -231,7 +231,7 @@ function statInfo(c, params){
 			var errors = [], warning = [];
 			
 			for (var i in e) {
-				e[i].c += 1;
+				e[i].c++;
 				if($.type(e[i].err) !== 'undefined'){									
 					if(e[i].c == attempts_update){
 						$('#'+e[i].err).html('<span class="err_stat">Нет данных</span>');	
