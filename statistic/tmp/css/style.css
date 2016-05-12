@@ -1,0 +1,69 @@
+*{
+	margin:0;
+	padding:0;
+}
+#block_statistic{
+	padding:10px;
+	width: 800px;
+}
+#block_stat_admin{
+	width: 800px;
+    position: fixed;
+    top:0px;
+    left: 850px;
+}
+#ssd, #sc{float:left;}
+#block_stat_admin li{
+	margin-left:30px;	
+}
+#stat_box{
+	opacity:0;
+}
+#stat_box table{
+	width: 100%;
+	position:relative;
+}
+#stat_box table td{
+	border:1px solid #ccc;
+	width: 50%;
+}
+#stat_box table td + td{
+	text-align:right;
+	position:relative;
+}
+
+#stat_box div > span{
+	font-weight: bold;
+}
+
+#stat_status{
+	position: absolute;
+   	margin: -26px 0px 0px 238px;
+   	width: 560px;
+}
+#warning_stat, #errors_stat{
+	font-style: italic;
+}
+#analys input[type="text"]{
+	padding:5px;
+}
+#chart{
+	width:464px;
+	height:320px;
+}
+#screenshot{
+	width:180px;
+	height:144px;
+	display:none;
+}
+.load{
+	height: 16px;
+   	padding-left: 15px;
+	background: url(../images/load.gif) 0 50% no-repeat;
+	width:135px;
+	font-weight: bold;
+}
+.err_stat{
+	color:red;
+}
+.activeSite > a{color:red;text-decoration:none;}
