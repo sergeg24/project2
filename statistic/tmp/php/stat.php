@@ -11,8 +11,13 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 	//code..
 	
 	function safe($name) {
-		$except = array('\\', '/', ':', '*', '?', '"', '<', '>', '|', 'domain_', 'runProcessor_', 'http', 'https', 'www.');
-		$name = htmlspecialchars_decode($name);
+		$except = array('\\', '/', ':', '*', '?', '"', '<', '>', '|', 'domain_', 'runProcessor_', 'www.');
+		$pos = strripos($name, 'https');
+		if ($pos !== false) {
+			$except[] = 'https';
+		}else{
+			$except[] = 'http';
+		}
 		return str_replace($except, '', trim($name));
 	}
 	
@@ -85,7 +90,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 		 
 		$output = curl_exec($ch); // get content
-		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); // РџРѕР»СѓС‡Р°РµРј HTTP-РєРѕРґ
+		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); // Получаем HTTP-код
 		 
 		curl_close($ch);
 		return $output;
@@ -168,7 +173,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 	
 	if(isset($_POST['site_name']) && !empty($_POST['site_name'])) {
 		if(isset($_SESSION['stat']))unset($_SESSION['stat']);
-		$domain = str_replace(array('http://', 'https://', '/'), '', trim($_POST['site_name']));
+		$domain = safe($_POST['site_name']);
 		$url = $siteApi.'/domain/'.$domain;
 		$casheContent = getCashe('domain_'.$domain);	
 		if(!empty($casheContent) && $cashe){
