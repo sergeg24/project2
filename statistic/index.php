@@ -21,23 +21,30 @@ define('ROOT', str_replace('index.php', 'tmp', $_SERVER['SCRIPT_NAME']));
 <link href="<?php echo ROOT; ?>/css/c3.css" rel="stylesheet"
 	type="text/css">
 <!-- Load d3.js and c3.js -->
+
+<link href="<?php echo ROOT; ?>/css/nprogress.css" rel="stylesheet"
+	type="text/css">
+
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="<?php echo ROOT; ?>/js/c3.min.js"></script>
+<script src="<?php echo ROOT; ?>/js/lang.js"></script>
 <script src="<?php echo ROOT; ?>/js/stat.js"></script>
+<script src="<?php echo ROOT; ?>/js/nprogress.js"></script>
+
 <title>Какой сайт продвигаем?</title>
 </head>
 
 <body>
+	
+<div id="block_statistic">
 
-	<div id="block_statistic">
-
-		<form id="analys" method="POST" action="<?php echo ROOT; ?>/php/stat.php">
-			<input type="text" placeholder="Какой сайт продвигаем?">
-			<button type="submit" onclick='stat();return false;'>Собрать</button>
-		</form>
+	<form id="analys" method="POST" action="<?php echo ROOT; ?>/php/stat.php">
+		<input type="text" placeholder="Какой сайт продвигаем?">
+		<button type="submit" onclick='stat();return false;'>Собрать</button>
+	</form>
 	
 	<?php
-	if (isset ( $_GET ['q'] )) {
+	if ( isset($_GET ['q']) ){
 		?>
 		<script>
 			$(function(){
@@ -47,197 +54,39 @@ define('ROOT', str_replace('index.php', 'tmp', $_SERVER['SCRIPT_NAME']));
 	<?php
 	}
 	?> 
-	
-	<div id="stat_status"></div>
-
+		
+	<div class="clear"></div>
+	<br/>
+	<div id='stat_print'>
 		<div id="screenshot"></div>
-
+		
+		<div id="description"></div>
+		
+		<div class="clear"></div>
+		<br/>
 		<div id="stat_box">
-
-			<table>
-				<tr>
-					<td>Итоговая оценка:</td>
-					<td><div>
-							<span id="optimism_rank">0</span>/100
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Скорость реакции сервера:</td>
-					<td><div>
-							<span id="connect_time">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Скорость загрузки страницы:</td>
-					<td><div>
-							<span id="total_time">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Объём главной страницы:</td>
-					<td><div>
-							<span id="size_download">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Авторитетность:</td>
-					<td><div>
-							PR:<span id="g_pr">-</span>/10
-						</div>
-						<div>
-							тИЦ:<span id="ya_tic">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Место в рейтинге Alexa:</td>
-					<td><div>
-							<span id="rank_alexa">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Страниц в индексе:</td>
-					<td><div>
-							<span id="g_index">-</span> в Google<br /> <span id="ya_index">-</span>
-							в Яндексе
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Наличие стандартов:</td>
-					<td><div><span id="mobile_version">-</span> Адаптивность<br /> <span
-						id="is_micro_data">-</span> Микроразметка<br /> <span
-						id="is_site_map">-</span> Sitemap.xml <br /> <span id="is_robots">-</span>
-						Robots.txt</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Наличие в каталогах:</td>
-					<td><div>
-							<span id="dmoz">-</span> DMOZ<br /> <span id="mailru_cat">-</span>
-							Mail.ru <br /> <span id="rambler_cat">-</span> Rambler<br />
-							<span id="ya_catalog">-</span> Яндекс.Каталог</td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Счётчики:</td>
-					<td><div>
-							<span id="g_metrics">-</span> Google.Analytics<br /> <span
-								id="ya_metrics">-</span> Яндекс.Метрика
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Технические параметры:</td>
-					<td><div>
-							<span id="redirect_main_page">-</span> Склейка зеркал<br /> <span
-								id="not_found">-</span> Корректность обработки 404 <br /> <span
-								id="correct_address">-</span> Правильная адресация</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Контекстная реклама:</td>
-					<td><div>
-							<span id="context_adv">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Яндекс новости:</td>
-					<td><div>
-							<span id="ya_news">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Проверка сайта на АГС:</td>
-					<td><div>
-							<span id="ags">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Качество входящих ссылок:</td>
-					<td><div>
-							<span id="citation_flow">-</span> доверие <br /> <span
-								id="trust_flow">-</span> цитирование
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Входящих ссылок:</td>
-					<td><div>
-							<span id="domains_into">-</span> сайтов<br /> <span
-								id="links_into">-</span> страниц</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Изменение количества входящих ссылок на ваш сайт:</td>
-					<td><div id="chart">-</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Возраст домена:</td>
-					<td><div>
-							<span id="domain_age">-</span>
-						</div></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>Вирусы:</td>
-					<td><div>
-							<span id="ya_virus">-</span>
-						</div></td>
-				</tr>
-			</table>
-
+			<table id="table_js"></table> 
 		</div>
-
 	</div>
-
+	
 	<div id="block_stat_admin">
-
+		<div id="bsa_panel">
+			<a href="" onclick="statStop();return false;">Остановить анализ</a> |
+			<a href="" onclick="PopupPrint($('#stat_print').html()); return false;">Печать</a>
+		</div>
+		<div class="clear"></div>
+		
+		<h3>Статус:</h3>
+		
+		<div id="stat_status">-</div>
+		
+		<div class="clear"></div>
+		
+		<h3>Console:</h3>
+		<div id="console"></div>
+		
+		<div class="clear"></div>
+		
 		<div id="ssd">
 		<?php if(isset($_COOKIE['site_name_user']) && !empty($_COOKIE['site_name_user'])){ ?>
 			<?php
@@ -273,8 +122,20 @@ define('ROOT', str_replace('index.php', 'tmp', $_SERVER['SCRIPT_NAME']));
 		</div>
 
 	</div>
+	
+</div>
+
+
 
 </body>
+
+<script>
+	table_create();
+    NProgress.start();
+    window.onload = function () {
+		NProgress.done();
+	};
+</script>
 
 </html> 
 

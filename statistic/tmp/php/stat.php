@@ -90,7 +90,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 		 
 		$output = curl_exec($ch); // get content
-		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); // Получаем HTTP-код
+		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); // РџРѕР»СѓС‡Р°РµРј HTTP-РєРѕРґ
 		 
 		curl_close($ch);
 		return $output;

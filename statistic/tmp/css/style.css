@@ -7,10 +7,13 @@
 	width: 800px;
 }
 #block_stat_admin{
-	width: 800px;
     position: fixed;
-    top:0px;
-    left: 850px;
+	max-width:470px;
+    top: 0px;
+    left: 808px;
+    background: rgb(245, 245, 255);
+	border: 1px solid rgb(234, 234, 255);
+    padding: 15px;
 }
 #ssd, #sc{float:left;}
 #block_stat_admin li{
@@ -26,20 +29,19 @@
 #stat_box table td{
 	border:1px solid #ccc;
 	width: 50%;
+	padding:5px;
 }
 #stat_box table td + td{
 	text-align:right;
 	position:relative;
 }
-
 #stat_box div > span{
 	font-weight: bold;
 }
-
 #stat_status{
-	position: absolute;
-   	margin: -26px 0px 0px 238px;
-   	width: 560px;
+	margin: 10px 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(204, 204, 204);
 }
 #warning_stat, #errors_stat{
 	font-style: italic;
@@ -55,6 +57,13 @@
 	width:180px;
 	height:144px;
 	display:none;
+	margin-right:10px;
+}
+#screenshot, #description{
+	float:left;
+}
+#description{
+	width:500px;
 }
 .load{
 	height: 16px;
@@ -67,3 +76,24 @@
 	color:red;
 }
 .activeSite > a{color:red;text-decoration:none;}
+.clear{
+	clear:both;
+}
+#bsa_panel{
+	padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+#ssd{
+	margin-right: 10px; 
+    padding-right: 10px;
+	padding-bottom: inherit;
+    border-right: 1px solid rgb(204, 204, 204);
+}
+#console{
+	height: 100px;
+    overflow-y: scroll;
+    border: 1px solid rgb(204, 204, 204);
+	margin-bottom: 10px;
+	padding: 5px
+}
